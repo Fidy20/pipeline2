@@ -1,0 +1,38 @@
+pipeline {
+    agent { docker { image 'python:3.7' }}
+
+    environment {
+        PROJECT_NAME = "NEPTUN"
+        OWNER_NAME = "DENIS"
+    }
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('test') {
+            steps {
+                sh '''
+                    echo "line1"
+                    echo "line2"
+                '''
+                echo "Hello ${OWNER_NAME}"
+                echo "Project name ${PROJECT_NAME}"
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'Hello World'
+                sh "python --version"
+            }
+        }
+        stage('4 celebrate') {
+            steps {
+                echo 'uspech'
+               
+            }
+        }
+    }
+}
